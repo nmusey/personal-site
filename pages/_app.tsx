@@ -12,7 +12,7 @@ export default function App({ Component, pageProps }: AppProps) {
     return (
         <>
             <Navbar links={ [{title: "Home", url: "/"}, {title: "Projects", url: "/projects"}, {title: "Blog", url: "/blog"}] }/>
-            <main className={`${rokkittFont.variable} font-serif h-screen w-screen`}>
+            <main className={`${rokkittFont.variable} font-serif h-screen w-screen flex justify-center px-16`}>
                 <Component {...pageProps} />
             </main>
         </>
