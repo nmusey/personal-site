@@ -4,13 +4,15 @@
     "slug": "project1",
     "link": "nickmusey.ca",
     "sourceLink": "https://github.com",
-    "filepath": ""
+    "filepath": "data/projects/project1.md",
+    "summary": "First test project"
   },
   {
-  "title": "Project 2",
-  "slug": "project2",
-  "link": "nickmusey.ca",
-  "sourceLink": "https://github.com",
-  "body": ""
+    "title": "Project 2",
+    "slug": "project2",
+    "link": "nickmusey.ca",
+    "sourceLink": "https://github.com",
+    "filepath" : "data/projects/project2.md",
+    "summary": "Second test project"
   }
 ]

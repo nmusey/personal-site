@@ -4,4 +4,5 @@ export interface Project {
     link: string;
     sourceLink: string;
     filepath: string;
+    summary: string;
 }

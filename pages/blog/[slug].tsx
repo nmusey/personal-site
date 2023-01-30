@@ -26,7 +26,7 @@ export async function getStaticPaths() : Promise<GetStaticPathsResult> {
 
 export async function getStaticProps(context: GetStaticPropsContext): Promise<GetStaticPropsResult<Props>> {
     const blogpost = blogposts.find(post => post.slug == context.params?.slug);
-    if (!blogpost) {
+    if (!blogpost || !blogpost.filepath) {
         return {
             redirect: {
                 destination: '/blog',
@@ -35,7 +35,6 @@ export async function getStaticProps(context: GetStaticPropsContext): Promise<Ge
         };
     }
 
-    console.log(process.cwd());
     const postBody = fs.readFileSync(blogpost.filepath).toString();
     return {
         props: { blogpost, postBody }
