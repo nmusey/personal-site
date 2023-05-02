@@ -8,16 +8,19 @@ import {GetStaticPathsResult, GetStaticPropsContext, GetStaticPropsResult} from 
 interface Props {
     project: Project;
     description: string;
+    link?: string;
+    sourceLink?: string;
 }
 
 export default function ProjectPage(props: Props) {
     return (
         <div className="flex flex-col">
-            <h1>{ props.project.title }</h1>
-            <Link href={props.project.link}>See the live project here.</Link>
-            <Link href={props.project.sourceLink}>See the source code here.</Link>
+            <h1 className="mb-8">{ props.project.title }</h1>
 
-            <article>
+            { props.project.link ? <Link href={props.project.link}>See the live project here.</Link> : '' }
+            { props.project.sourceLink ? <Link href={props.project.sourceLink}>See the source code here.</Link> : ''}
+
+            <article className="mt-8">
                 <ReactMarkdown>{ props.description }</ReactMarkdown>
             </article>
         </div>
