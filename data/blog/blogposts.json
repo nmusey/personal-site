@@ -1,14 +1,2 @@
 [
-  {
-    "title": "Test Post 1",
-    "slug": "test1",
-    "summary": "This is a test blog post",
-    "filepath": "data/blog/test1.md"
-  },
-  {
-    "title": "Test Post 2",
-    "slug": "test2",
-    "summary": "This is a second test blog post. It has a longer summary than the first to see how text wrapping works with summaries. This seems like it will be a good length now.",
-    "filepath": "data/blog/test2.md"
-  }
 ]

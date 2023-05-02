@@ -1,18 +1,17 @@
 [
   {
-    "title": "Project 1",
-    "slug": "project1",
-    "link": "nickmusey.ca",
-    "sourceLink": "https://github.com",
-    "filepath": "data/projects/project1.md",
-    "summary": "First test project"
+    "title": "Dotfiles",
+    "slug": "dotfiles",
+    "sourceLink": "https://github.com/nmusey/dotfiles",
+    "filepath": "data/projects/dotfiles.md",
+    "summary": "Files to reproduce my development setup on any Unix computer."
   },
   {
-    "title": "Project 2",
-    "slug": "project2",
+    "title": "Personal Site",
+    "slug": "personal-site",
     "link": "nickmusey.ca",
-    "sourceLink": "https://github.com",
-    "filepath" : "data/projects/project2.md",
-    "summary": "Second test project"
+    "sourceLink": "https://github.com/nmusey/personal-site",
+    "filepath" : "data/projects/personal-site.md",
+    "summary": "A writeup on the site you're likely reading this on."
   }
 ]
