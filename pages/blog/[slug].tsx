@@ -19,14 +19,14 @@ export default function BlogPostPage(props: Props) {
 
 export async function getStaticPaths() : Promise<GetStaticPathsResult> {
     return {
-        paths: blogposts.map(post => ({ params: {  slug: post.slug }})),
+        paths: blogposts.map((post: BlogPost) => ({ params: {  slug: post.slug }})),
         fallback: false
     };
 }
 
 export async function getStaticProps(context: GetStaticPropsContext): Promise<GetStaticPropsResult<Props>> {
-    const blogpost = blogposts.find(post => post.slug == context.params?.slug);
-    if (!blogpost || !blogpost.filepath) {
+    const blogpost = blogposts.find((post: BlogPost) => post.slug == context.params?.slug) as unknown as BlogPost|undefined;
+    if (blogpost === undefined) {
         return {
             redirect: {
                 destination: '/blog',
