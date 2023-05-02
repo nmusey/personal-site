@@ -35,7 +35,7 @@ export async function getStaticPaths(): Promise<GetStaticPathsResult> {
 }
 
 export async function getStaticProps(context: GetStaticPropsContext): Promise<GetStaticPropsResult<Props>> {
-    const project = projects.find(project => project.slug == context.params?.slug);
+    const project = projects.find(project => project.slug == context.params?.slug) as unknown as Project;
     if (!project || !project.filepath) {
         return {
             redirect: {
