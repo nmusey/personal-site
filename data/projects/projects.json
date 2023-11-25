@@ -13,5 +13,12 @@
     "sourceLink": "https://github.com/nmusey/personal-site",
     "filepath" : "data/projects/personal-site.md",
     "summary": "A writeup on the site you're likely reading this on."
+  },
+  {
+    "title": "letsgo",
+    "slug": "letsgo",
+    "sourceLink": "https://github.com/nmusey/letsgo",
+    "filepath": "data/projects/letsgo.md",
+    "summary": "A simple command line tool to quickly start a Go project."
   }
 ]
