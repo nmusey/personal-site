@@ -11,7 +11,7 @@ const rokkittFont = Rokkitt({
 export default function App({ Component, pageProps }: AppProps) {
     return (
         <>
-            <Navbar links={ [{title: "Home", url: "/"}, {title: "Projects", url: "/projects"}, {title: "Blog", url: "/blog"}] }/>
+            <Navbar links={ [{title: "Home", url: "/"}, {title: "Projects", url: "/projects"}] }/>
             <main className={`${rokkittFont.variable} font-serif h-screen w-screen flex justify-center px-16`}>
                 <Component {...pageProps} />
             </main>
