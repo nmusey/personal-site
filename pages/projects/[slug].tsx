@@ -1,4 +1,3 @@
-import projects from "../../data/projects/projects.json";
 import ReactMarkdown from "react-markdown";
 import Link from "next/link";
 import {GetStaticPathsResult, GetStaticPropsContext, GetStaticPropsResult} from "next";
