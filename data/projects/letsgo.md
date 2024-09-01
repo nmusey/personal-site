@@ -1,3 +1,10 @@
+---
+title: letsgo
+slug: letsgo
+sourceLink: https://github.com/nmusey/letsgo
+summary: A simple command line tool to quickly start a Go webserver
+---
+
 # letsgo: Turbocharge Your Go Projects! 💥
 
 Imagine this: you're a Go fanatic, pumped up to dive into thrilling new projects. But rather than fussing with tedious setup procedures, wouldn't it be exhilarating if you could hit the ground running with a project tailored just the way you want? Well, enter letsgo, the tool that makes it all happen! 🚀

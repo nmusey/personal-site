@@ -1,32 +1,31 @@
-import blogposts from "../../data/blog/blogposts.json";
-import {GetStaticPathsResult, GetStaticPropsContext, GetStaticPropsResult} from "next";
-import {BlogPost} from "@/types/BlogPost";
+import { GetStaticPathsResult, GetStaticPropsContext, GetStaticPropsResult } from "next";
 import ReactMarkdown from "react-markdown";
-import fs from "fs";
+import { Post, getPosts } from "@/helpers/getPosts";
 
 interface Props {
-    blogpost: BlogPost;
-    postBody: string;
+    post: Post;
 }
 
 export default function BlogPostPage(props: Props) {
     return (
         <article>
-            <ReactMarkdown>{ props.postBody }</ReactMarkdown>
+            <ReactMarkdown>{ props.post.contents }</ReactMarkdown>
         </article>
     );
 }
 
-export async function getStaticPaths() : Promise<GetStaticPathsResult> {
+export async function getStaticPaths(): Promise<GetStaticPathsResult> {
+    const posts = await getPosts("data/blog");
     return {
-        paths: blogposts.map((post: BlogPost) => ({ params: {  slug: post.slug }})),
+        paths: posts.map((post: Post) => ({ params: { ...post } })),
         fallback: false
     };
 }
 
 export async function getStaticProps(context: GetStaticPropsContext): Promise<GetStaticPropsResult<Props>> {
-    const blogpost = blogposts.find((post: BlogPost) => post.slug == context.params?.slug) as unknown as BlogPost|undefined;
-    if (blogpost === undefined) {
+    const posts = await getPosts("data/blog");
+    const post = posts.find((post: Post) => post.slug == context.params?.slug) as unknown as Post | undefined;
+    if (post === undefined) {
         return {
             redirect: {
                 destination: '/blog',
@@ -35,8 +34,7 @@ export async function getStaticProps(context: GetStaticPropsContext): Promise<Ge
         };
     }
 
-    const postBody = fs.readFileSync(blogpost.filepath).toString();
     return {
-        props: { blogpost, postBody }
+        props: { post }
     }
 }

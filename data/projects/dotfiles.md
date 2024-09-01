@@ -1,3 +1,10 @@
+---
+slug: dotfiles
+title: Dotfiles
+sourceLink: https://github.com/nmusey/dotfiles 
+summary: Files to reproduce my development setup on any Unix-like computer
+---
+
 I recently started reevaluating my development setup. Since I spend my entire professional and part of my personal site with it, I decided to put some thought into how it is set up. 
 
 ## Requirements

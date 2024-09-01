@@ -1,42 +1,40 @@
 import projects from "../../data/projects/projects.json";
-import {Project} from "@/types/Project";
 import ReactMarkdown from "react-markdown";
 import Link from "next/link";
-import fs from "fs";
 import {GetStaticPathsResult, GetStaticPropsContext, GetStaticPropsResult} from "next";
+import { Post, getPosts } from "@/helpers/getPosts";
 
 interface Props {
-    project: Project;
-    description: string;
-    link?: string;
-    sourceLink?: string;
+    post: Post;
 }
 
 export default function ProjectPage(props: Props) {
     return (
         <div className="flex flex-col">
-            <h1 className="mb-8">{ props.project.title }</h1>
+            <h1 className="mb-8">{ props.post.title }</h1>
 
-            { props.project.link ? <Link href={props.project.link}>See the live project here.</Link> : '' }
-            { props.project.sourceLink ? <Link href={props.project.sourceLink}>See the source code here.</Link> : ''}
+            { props.post.link ? <Link href={props.post.link}>See the live project here.</Link> : '' }
+            { props.post.sourceLink ? <Link href={props.post.sourceLink}>See the source code here.</Link> : ''}
 
             <article className="mt-8">
-                <ReactMarkdown>{ props.description }</ReactMarkdown>
+                <ReactMarkdown>{ props.post.contents }</ReactMarkdown>
             </article>
         </div>
     );
 }
 
 export async function getStaticPaths(): Promise<GetStaticPathsResult> {
+    const posts = await getPosts("data/projects");
     return {
-        paths: projects.map(project => ({ params: { slug: project.slug }})),
+        paths: posts.map((post: Post) => ({ params: { ...post } })),
         fallback: false
     };
 }
 
 export async function getStaticProps(context: GetStaticPropsContext): Promise<GetStaticPropsResult<Props>> {
-    const project = projects.find(project => project.slug == context.params?.slug) as unknown as Project;
-    if (!project || !project.filepath) {
+    const posts = await getPosts("data/projects");
+    const post = posts.find((post: Post) => post.slug == context.params?.slug) as unknown as Post | undefined;
+    if (post === undefined) {
         return {
             redirect: {
                 destination: '/projects',
@@ -45,8 +43,7 @@ export async function getStaticProps(context: GetStaticPropsContext): Promise<Ge
         };
     }
 
-    const description = fs.readFileSync(project.filepath).toString();
     return {
-        props: { project, description }
-    };
+        props: { post }
+    }
 }

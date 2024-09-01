@@ -1,3 +1,11 @@
+---
+slug: personal-site
+title: Personal Site
+link: nickmusey.ca
+sourceLink: https://github.com/nmusey/personal-site
+summary: A writeup on the site you're likely reading this on.
+---
+
 You're probably reading this on my personal site right now. I'd like a place online to share any projects I work on in my free time and share a few thoughts occasionally.
 
 ## Development

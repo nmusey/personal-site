@@ -1,14 +1,24 @@
-import { BlogPost } from "@/types/BlogPost";
-import blogposts from "../../data/blog/blogposts.json";
+import { Post, getPosts } from "@/helpers/getPosts";
 
+type Props = {
+    posts: Post[]    
+}
 
-export default function BlogIndex() {
+export async function getStaticProps() {
+    return {
+        props: {
+            posts: await getPosts("data/blog")
+        }
+    };
+}
+
+export default function BlogIndex(props: Props) {
     return (
         <div className="flex flex-col justify-start">
             <h1 className="text-center">Blog Posts</h1>
             <div className="flex flex-col align-middle">
                 {
-                    blogposts.map((post: BlogPost) => (
+                    props.posts.map((post: Post) => (
                         <a href={`/blog/${post.slug}`} key={post.slug} className="text-center my-8">
                             <h6>{post.title}</h6>
                             <p>{post.summary}</p>
@@ -16,7 +26,7 @@ export default function BlogIndex() {
                     ))
                 }
                 {
-                    blogposts.length == 0 ? <h6>No blog posts yet! Check back soon.</h6> : ''
+                    props.posts.length == 0 ? <h6>No blog posts yet! Check back soon.</h6> : ''
                 }
             </div>
         </div>
