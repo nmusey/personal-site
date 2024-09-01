@@ -1,6 +1,9 @@
+import generateRssFeed from '@/helpers/rss';
 import Link from 'next/link';
 
-export default function Home() {
+export default async function Home() {
+    await generateRssFeed();
+
     return (
         <div className="h-screen flex flex-col justify-evenly align-middle">
             <h1 className="text-center">Hi, I&apos;m Nick Musey.</h1>

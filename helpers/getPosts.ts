@@ -5,6 +5,7 @@ import { join } from "path";
 export type Post = {
     filepath: string
     contents: string
+    publishDate: Date,
     slug?: string
     title?: string
     summary?: string
@@ -20,9 +21,10 @@ export async function getPosts(directory: string): Promise<Post[]> {
         const filepath = join(basedir, directory, path);
         const file = read(filepath);
         return {
+            ...file.data,
             filepath,
             contents: file.content,
-            ...file.data
+            publishDate: file.data.publishDate ?? new Date()
         };
     });
 }
