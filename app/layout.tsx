@@ -2,7 +2,7 @@ import { Metadata } from "next";
 import { Rokkitt } from "next/font/google";
 import Navbar from "@/components/Navbar";
 import navbar from "@/data/navbar.json";
-import "@/styles/globals.css";
+import "./global.css";
 
 export const metadata: Metadata = {
     title: "Nick Musey",
@@ -21,7 +21,7 @@ const rokkittFont = Rokkitt({
 
 export default function RootLayout(props: Props) {
   return (
-    <html lang="en">
+    <html lang="en" className="h-full w-full">
         <head>
             <link rel="icon" href="/favicon.png" />
             <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />

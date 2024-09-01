@@ -1,4 +1,3 @@
-import { GetStaticPathsResult } from "next";
 import ReactMarkdown from "react-markdown";
 import { Post, getPosts } from "@/helpers/getPosts";
 
@@ -10,7 +9,7 @@ type Props = {
 
 export default async function BlogPostPage(props: Props) {
     const posts = await getPosts("data/blog");
-    const post = posts.find((post: Post) => post.slug == props.params.slug) as unknown as Post | undefined;
+    const post = posts.find((post: Post) => post.slug == props.params.slug);
     if (post === undefined) {
         return {
             redirect: {
@@ -25,12 +24,4 @@ export default async function BlogPostPage(props: Props) {
             <ReactMarkdown>{ post.contents }</ReactMarkdown>
         </article>
     );
-}
-
-export async function getStaticPaths(): Promise<GetStaticPathsResult> {
-    const posts = await getPosts("data/blog");
-    return {
-        paths: posts.map((post: Post) => ({ params: { ...post } })),
-        fallback: false
-    };
 }

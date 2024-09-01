@@ -1,7 +1,6 @@
 import ReactMarkdown from "react-markdown";
 import Link from "next/link";
 import { Post, getPosts } from "@/helpers/getPosts";
-import { GetStaticPathsResult } from "next";
 
 type Props = {
     params: {
@@ -33,12 +32,4 @@ export default async function ProjectPage(props: Props) {
             </article>
         </div>
     );
-}
-
-export async function getStaticPaths(): Promise<GetStaticPathsResult> {
-    const posts = await getPosts("data/projects");
-    return {
-        paths: posts.map((post: Post) => ({ params: { ...post } })),
-        fallback: false
-    };
 }
